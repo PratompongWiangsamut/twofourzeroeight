@@ -49,7 +49,7 @@ namespace twozerofoureight
         public bool GameStatus()
         {
             bool status = false;
-            for (int i = 0; i < boardSize; i++)
+            for (int i = 0; i < boardSize; i++)//if number is 2048 game over
             {
                 for (int j = 0; j < boardSize; j++)
                 {
@@ -60,7 +60,7 @@ namespace twozerofoureight
                     }
                 }
             }
-            for(int i = 0; i < boardSize; i++)
+            for(int i = 0; i < boardSize; i++)//if board is not full allow to play
             {
                 for(int j = 0; j < boardSize; j++)
                 {
@@ -71,7 +71,7 @@ namespace twozerofoureight
                     }
                 }
             }
-            for(int i = 0; i < boardSize; i++)
+            for(int i = 0; i < boardSize; i++)//check if up,down,left,right side equal to this allow to play but if not game over 
             {
                 for(int j = 0; j < boardSize; j++)
                 {

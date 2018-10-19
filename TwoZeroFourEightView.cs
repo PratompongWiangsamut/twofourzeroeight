@@ -28,8 +28,8 @@ namespace twozerofoureight
         public void Notify(Model m)
         {
             UpdateBoard(((TwoZeroFourEightModel)m).GetBoard());
-            UpdateScore(((TwoZeroFourEightModel)m).GetScore());
-            UpdateStatus(((TwoZeroFourEightModel)m).GameStatus());
+            UpdateScore(((TwoZeroFourEightModel)m).GetScore());//update score
+            UpdateStatus(((TwoZeroFourEightModel)m).GameStatus());//update status
         }
 
         private void UpdateTile(Label l, int i)
@@ -67,15 +67,15 @@ namespace twozerofoureight
         }
         private void UpdateStatus(bool status)
         {
-            if (status)
+            if (status)//if game over
             {
-                over.Text = "GameOver!!!";
-                btnUp.Enabled = false;
-                btnRight.Enabled = false;
-                btnLeft.Enabled = false;
-                btnDown.Enabled = false;
+                over.Text = "GameOver!!!";//show game over
+                btnUp.Enabled = false;//not allow to input
+                btnRight.Enabled = false;//not allow to input
+                btnLeft.Enabled = false;//not allow to input
+                btnDown.Enabled = false;//not allow to input
 
-                KeyPreview = false;
+                KeyPreview = false;//not allow to input
 
             }
             else { }
@@ -124,7 +124,7 @@ namespace twozerofoureight
 
         private void TwoZeroFourEightView_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            switch (e.KeyCode)
+            switch (e.KeyCode)//allow to use arrow key (in the pass if push arrow key it work on focus buttom)
             {
                 case Keys.Up:
                 case Keys.Down:
@@ -143,7 +143,7 @@ namespace twozerofoureight
 
         private void TwoZeroFourEightView_KeyDown(object sender, KeyEventArgs e)
         {
-            if (KeyPreview)
+            if (KeyPreview)//key input
                 switch (e.KeyData)
                 {
                     case Keys.W:
