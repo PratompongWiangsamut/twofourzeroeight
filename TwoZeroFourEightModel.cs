@@ -34,6 +34,73 @@ namespace twozerofoureight
             // initialize board
             HandleChanges();
         }
+        public int GetScore()
+        {
+            int sum = 0;
+            for (int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize; j++)
+                {
+                    sum = sum + board[i, j];
+                }
+            }
+            return sum;
+        }
+        public bool GameStatus()
+        {
+            bool status = false;
+            for (int i = 0; i < boardSize; i++)
+            {
+                for (int j = 0; j < boardSize; j++)
+                {
+                    if (board[i, j] == 2048)
+                    {
+                        status = true;
+                        return status;
+                    }
+                }
+            }
+            for(int i = 0; i < boardSize; i++)
+            {
+                for(int j = 0; j < boardSize; j++)
+                {
+                    if (board[i, j] == 0)
+                    {
+                        status = false;
+                        return status;
+                    }
+                }
+            }
+            for(int i = 0; i < boardSize; i++)
+            {
+                for(int j = 0; j < boardSize; j++)
+                {
+                    if (i + 1 < 4 && board[i, j] == board[i + 1, j])
+                    {
+                        status = false;
+                        return status;
+                    }
+                    if (i - 1 > -1 && board[i, j] == board[i - 1, j])
+                    {
+                        status = false;
+                        return status;
+                    }
+                    if (j + 1 < 4 && board[i, j] == board[i , j+1])
+                    {
+                        status = false;
+                        return status;
+                    }
+                    if (j - 1 > -1 && board[i, j] == board[i , j-1])
+                    {
+                        status = false;
+                        return status;
+                    }
+                   
+                }
+            }
+            status = true;
+            return status;
+        }
 
         public int[,] GetBoard()
         {
@@ -52,6 +119,7 @@ namespace twozerofoureight
                     return;
                 }
             }
+                       
         }
 
         // Perform shift and merge to the left of the given array.
